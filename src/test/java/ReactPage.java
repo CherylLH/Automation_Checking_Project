@@ -58,4 +58,20 @@ public class ReactPage {
     public void clearCompleted() {
         driver.findElement(By.className("clear-completed")).click();
     }
+
+    public boolean checkAdded(String added) {
+        List<WebElement> labels = driver.findElements(By.cssSelector("label[data-testid='todo-item-label']"));
+        boolean found = false;
+        for (WebElement label : labels) {
+            if (label.getText().equals(added)) {
+
+                found = true;
+                break;
+
+            }
+
+
+        }
+        return found;
+    }
 }
