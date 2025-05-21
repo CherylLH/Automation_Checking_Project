@@ -116,6 +116,17 @@ public class ReactTest {
         }
         assertFalse(found);
     }
+
+    @Test
+    public void test5MarkComplete() {
+        ReactPage reactPage = new ReactPage(driver);
+        reactPage.navigate();
+        String addedItem = "Buy milk";
+        reactPage.AddItem(addedItem);
+        reactPage.MarkComplete(addedItem);
+        boolean found = reactPage.isItemMarkedCompleted("Buy milk");
+        assertTrue(found);
+    }
 }
 
 
