@@ -123,9 +123,50 @@ public class ReactTest {
         reactPage.navigate();
         String addedItem = "Buy milk";
         reactPage.AddItem(addedItem);
-        reactPage.MarkComplete(addedItem);
+        reactPage.toggleComplete(addedItem);
         boolean found = reactPage.isItemMarkedCompleted("Buy milk");
         assertTrue(found);
+    }
+
+    @Test
+    public void test6MarkIncomplete() {
+        ReactPage reactPage = new ReactPage(driver);
+        reactPage.navigate();
+        String addedItem = "Buy milk";
+        reactPage.AddItem(addedItem);
+        reactPage.toggleComplete(addedItem);
+        boolean found = reactPage.isItemMarkedCompleted("Buy milk");
+        assertTrue(found);
+        reactPage.toggleComplete(addedItem);
+        found = reactPage.isItemMarkedCompleted("Buy milk");
+        assertFalse(found);
+    }
+
+    @Test
+    public void test7ClearCompleted() {
+        ReactPage reactPage = new ReactPage(driver);
+        reactPage.navigate();
+        String addedItem = "Buy milk";
+        reactPage.AddItem(addedItem);
+        reactPage.toggleComplete(addedItem);
+        boolean found = reactPage.isItemMarkedCompleted("Buy milk");
+        assertTrue(found);
+        //reactPage.AddItem("Buy bread");
+        reactPage.clearCompleted();
+        List<WebElement> labels = driver.findElements(By.cssSelector("label[data-testid='todo-item-label']"));
+        found = false;
+        for (WebElement label : labels) {
+            if (label.getText().equals("Buy Milk")) {
+
+                found = true;
+                break;
+
+            }
+
+
+        }
+        assertFalse(found);
+
     }
 }
 
