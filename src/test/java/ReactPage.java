@@ -28,7 +28,7 @@ public class ReactPage {
         driver.findElement(By.id("todo-input")).sendKeys(Keys.ENTER);
     }
 
-    public void MarkComplete(String addedItem) {
+    public void toggleComplete(String addedItem) {
         // driver.findElement(By.cssSelector(".view")).click(); // Mark as complete
         List<WebElement> items = driver.findElements(By.cssSelector("li[data-testid='todo-item']"));
 
@@ -53,5 +53,9 @@ public class ReactPage {
             }
         }
         return false;
+    }
+
+    public void clearCompleted() {
+        driver.findElement(By.className("clear-completed")).click();
     }
 }
