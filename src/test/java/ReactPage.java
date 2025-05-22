@@ -36,7 +36,7 @@ public class ReactPage {
     }
 
     //method for input...(empty string, special characters, single character input, 2,3,4)
-    public void AddItem(String item) {
+    public void addItem(String item) {
         driver.findElement(By.id("todo-input")).click();
         driver.findElement(By.id("todo-input")).sendKeys(item);
         driver.findElement(By.id("todo-input")).sendKeys(Keys.ENTER);
