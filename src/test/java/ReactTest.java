@@ -2,6 +2,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -31,20 +32,8 @@ public class ReactTest {
     public void test1AddValidTodo() {
         ReactPage reactPage = new ReactPage(driver);
         String item = "Buy milk";
-        reactPage.navigate();
+        reactPage.navigateReact();
         reactPage.AddItem(item);
-//        List<WebElement> labels = driver.findElements(By.cssSelector("label[data-testid='todo-item-label']"));
-//        boolean found = false;
-//        for (WebElement label : labels) {
-//            if (label.getText().equals("Buy Milk")) {
-//
-//                found = true;
-//                break;
-//
-//            }
-//
-//
-//        }
         boolean found = reactPage.checkAdded(item);
         assertTrue(found);
 
@@ -56,7 +45,7 @@ public class ReactTest {
     public void test2RejectEmpty() {
         ReactPage reactPage = new ReactPage(driver);
         String item = "";
-        reactPage.navigate();
+        reactPage.navigateReact();
         reactPage.AddItem(item);
         List<WebElement> labels = driver.findElements(By.cssSelector("label[data-testid='todo-item-label']"));
         boolean found = false;
@@ -74,7 +63,7 @@ public class ReactTest {
     public void test3SpecialChars() {
         ReactPage reactPage = new ReactPage(driver);
         String item = "!!@£$";
-        reactPage.navigate();
+        reactPage.navigateReact();
         reactPage.AddItem(item);
         List<WebElement> labels = driver.findElements(By.cssSelector("label[data-testid='todo-item-label']"));
         boolean found = false;
@@ -93,7 +82,7 @@ public class ReactTest {
     public void test4SingleChar() {
         ReactPage reactPage = new ReactPage(driver);
         String item = "C";
-        reactPage.navigate();
+        reactPage.navigateReact();
         reactPage.AddItem(item);
         List<WebElement> labels = driver.findElements(By.cssSelector("label[data-testid='todo-item-label']"));
         boolean found = false;
@@ -110,7 +99,7 @@ public class ReactTest {
     public void test5MarkComplete() {
         ReactPage reactPage = new ReactPage(driver);
         String item = "Buy milk";
-        reactPage.navigate();
+        reactPage.navigateReact();
         reactPage.AddItem(item);
         reactPage.toggleComplete(item);
         boolean found = reactPage.isItemMarkedCompleted(item);
@@ -121,7 +110,7 @@ public class ReactTest {
     public void test6MarkIncomplete() {
         ReactPage reactPage = new ReactPage(driver);
         String item = "Buy milk";
-        reactPage.navigate();
+        reactPage.navigateReact();
         reactPage.AddItem(item);
         reactPage.toggleComplete(item);
         boolean found = reactPage.isItemMarkedCompleted(item);
@@ -135,7 +124,7 @@ public class ReactTest {
     public void test7ClearCompleted() {
         ReactPage reactPage = new ReactPage(driver);
         String item = "Buy milk";
-        reactPage.navigate();
+        reactPage.navigateReact();
         reactPage.AddItem(item);
         reactPage.toggleComplete(item);
         boolean found = reactPage.isItemMarkedCompleted(item);
@@ -151,6 +140,29 @@ public class ReactTest {
             }
         }
         assertFalse(found);
+    }
+
+    @Test
+    public void tempTestRRNavigate() {
+        ReactPage reactPage = new ReactPage(driver);
+        reactPage.navigateReact();
+        String item = "Buy milk";
+        reactPage.AddItem(item);
+        boolean found = reactPage.checkAdded(item);
+        // Assert that an item has been added
+        assertTrue(found);
+        reactPage.navigateReactRedux();
+        // Make a list with all the elements with the name 'todo-count' and assert that it is empty (element doesn't exist) or the element is not displayed
+        List<WebElement> countElements = driver.findElements(By.className("todo-count"));
+        assertTrue(countElements.isEmpty() || !countElements.get(0).isDisplayed());
+        reactPage.navigateVue();
+        // Do the same for the Vue.js page
+        // Test failure check (add item to evoke 'todo-count')
+//        driver.findElement(By.cssSelector(".new-todo")).sendKeys("VTest");
+//        driver.findElement(By.cssSelector(".new-todo")).sendKeys(Keys.ENTER);
+        // ------------------
+        countElements = driver.findElements(By.className("todo-count"));
+        assertTrue(countElements.isEmpty() || !countElements.get(0).isDisplayed());
     }
 }
 
