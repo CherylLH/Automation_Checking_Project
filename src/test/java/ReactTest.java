@@ -157,7 +157,7 @@ public class ReactTest {
         // Assert that an item has been added
         assertTrue(found);
         reactPage.navigateReactRedux();
-        // Make a list with all the elements with the name 'todo-count' and assert that it is empty (element doesn't exist) or the element is not displayed
+        // Create a list with all the elements with the name 'todo-count' and assert that it is empty (element doesn't exist) or the element is not displayed
         List<WebElement> countElements = driver.findElements(By.className("todo-count"));
         assertTrue(countElements.isEmpty() || !countElements.get(0).isDisplayed());
         reactPage.navigateVue();
