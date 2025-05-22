@@ -7,6 +7,7 @@ This repository contains automated tests for the TodoMVC website. Our goal was t
 --Test Coverage Planning--
 
 Below is a table outlining the test cases we planned. These were categorized based on whether they should be automated immediately or deferred for later.
+
 <img width="1440" alt="Screenshot 2025-05-22 at 13 47 34" src="https://github.com/user-attachments/assets/88f3841e-2121-4fa7-a679-f9bd7cfc6f98" />
 
 
