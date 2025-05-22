@@ -143,7 +143,7 @@ public class ReactTest {
     }
 
     @Test
-    public void tempTestRRNavigate() {
+    public void test8FrameworkIsolation() {
         ReactPage reactPage = new ReactPage(driver);
         reactPage.navigateReact();
         String item = "Buy milk";
