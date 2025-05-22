@@ -15,10 +15,24 @@ public class ReactPage {
     }
 
     // Navigate to the React version
-    public void navigate() {
+    public void navigateReact() {
         driver.get("https://todomvc.com/");
         js.executeScript("window.scrollTo(0,411)");
         driver.findElement(By.cssSelector(".js-app-list:nth-child(1) li:nth-child(1) .link")).click();
+    }
+
+    // Navigate to the React Redux version
+    public void navigateReactRedux() {
+        driver.get("https://todomvc.com/");
+        js.executeScript("window.scrollTo(0,411)");
+        driver.findElement(By.cssSelector(".js-app-list:nth-child(1) li:nth-child(2) .link")).click();
+    }
+
+    // Navigate to the Vue.js version
+    public void navigateVue() {
+        driver.get("https://todomvc.com/");
+        js.executeScript("window.scrollTo(0,411)");
+        driver.findElement(By.cssSelector(".js-app-list:nth-child(1) li:nth-child(3) .link")).click();
     }
 
     //method for input...(empty string, special characters, single character input, 2,3,4)
@@ -29,7 +43,6 @@ public class ReactPage {
     }
 
     public void toggleComplete(String addedItem) {
-        // driver.findElement(By.cssSelector(".view")).click(); // Mark as complete
         List<WebElement> items = driver.findElements(By.cssSelector("li[data-testid='todo-item']"));
 
         for (WebElement item : items) {
@@ -69,8 +82,6 @@ public class ReactPage {
                 break;
 
             }
-
-
         }
         return found;
     }
