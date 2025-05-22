@@ -33,7 +33,7 @@ public class ReactTest {
         ReactPage reactPage = new ReactPage(driver);
         String item = "Buy milk";
         reactPage.navigateReact();
-        reactPage.AddItem(item);
+        reactPage.addItem(item);
         boolean found = reactPage.checkAdded(item);
         assertTrue(found);
 
@@ -46,7 +46,7 @@ public class ReactTest {
         ReactPage reactPage = new ReactPage(driver);
         String item = "";
         reactPage.navigateReact();
-        reactPage.AddItem(item);
+        reactPage.addItem(item);
         List<WebElement> labels = driver.findElements(By.cssSelector("label[data-testid='todo-item-label']"));
         boolean found = false;
         for (WebElement label : labels) {
@@ -64,7 +64,7 @@ public class ReactTest {
         ReactPage reactPage = new ReactPage(driver);
         String item = "!!@£$";
         reactPage.navigateReact();
-        reactPage.AddItem(item);
+        reactPage.addItem(item);
         List<WebElement> labels = driver.findElements(By.cssSelector("label[data-testid='todo-item-label']"));
         boolean found = false;
         for (WebElement label : labels) {
@@ -83,7 +83,7 @@ public class ReactTest {
         ReactPage reactPage = new ReactPage(driver);
         String item = "C";
         reactPage.navigateReact();
-        reactPage.AddItem(item);
+        reactPage.addItem(item);
         List<WebElement> labels = driver.findElements(By.cssSelector("label[data-testid='todo-item-label']"));
         boolean found = false;
         for (WebElement label : labels) {
@@ -101,7 +101,7 @@ public class ReactTest {
         ReactPage reactPage = new ReactPage(driver);
         String item = "Buy milk";
         reactPage.navigateReact();
-        reactPage.AddItem(item);
+        reactPage.addItem(item);
         reactPage.toggleComplete(item);
         boolean found = reactPage.isItemMarkedCompleted(item);
         assertTrue(found);
@@ -113,7 +113,7 @@ public class ReactTest {
         ReactPage reactPage = new ReactPage(driver);
         String item = "Buy milk";
         reactPage.navigateReact();
-        reactPage.AddItem(item);
+        reactPage.addItem(item);
         reactPage.toggleComplete(item);
         boolean found = reactPage.isItemMarkedCompleted(item);
         assertTrue(found);
@@ -129,7 +129,7 @@ public class ReactTest {
         ReactPage reactPage = new ReactPage(driver);
         String item = "Buy milk";
         reactPage.navigateReact();
-        reactPage.AddItem(item);
+        reactPage.addItem(item);
         reactPage.toggleComplete(item);
         boolean found = reactPage.isItemMarkedCompleted(item);
         assertTrue(found);
@@ -152,7 +152,7 @@ public class ReactTest {
         ReactPage reactPage = new ReactPage(driver);
         reactPage.navigateReact();
         String item = "Buy milk";
-        reactPage.AddItem(item);
+        reactPage.addItem(item);
         boolean found = reactPage.checkAdded(item);
         // Assert that an item has been added
         assertTrue(found);
